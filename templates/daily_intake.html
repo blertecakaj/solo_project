@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eNutrition</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/daily_cal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" id="logo">eNutrition</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/needed_calories">Needed Calories</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/daily_intake">Daily Calory Intake<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div id="wrapper">
+      <div class="daily_calories">
+        <h4>Count your daily calories:</h4>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 1" name="daily_calories" id="dc1"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 2" name="daily_calories" id="dc2"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 3" name="daily_calories" id="dc3"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 4" name="daily_calories" id="dc4"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 5" name="daily_calories" id="dc5"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 6" name="daily_calories" id="dc6"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 7" name="daily_calories" id="dc7"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 8" name="daily_calories" id="dc8"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 9" name="daily_calories" id="dc9"/>
+        </div>
+        <div class="form-group">
+          <input onblur="countDailyCalories()" type="text" class="form-control" placeholder="Input 10" name="daily_calories" id="dc10"/>
+        </div>
+          <input type="text" name="total" class="form-control" placeholder="Result" id="total"/>
+      </div>
+      <div id="search-form">
+        <input id="search" class="form-control" type="text" placeholder="Search food:" aria-label="Search">
+        <div id="result"></div>
+      </div>
+    </div>
+    <footer>
+      <p>B.C.</p>
+    </footer>
+  </body>
+</html>

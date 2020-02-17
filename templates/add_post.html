@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eNutrition</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" id="logo">eNutrition</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/food">Food</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/posts/add">Add Post<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/food/add">Add Food</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="wrapper">
+    <div id="posts">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form action="/posts/create" method="post" id="post_form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="post_name" placeholder="Post Name">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="post_content" placeholder="Post Content" rows="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger" id="btn_post">Add Post</button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p>B.C.</p>
+    </footer>
+  </body>
+</html>

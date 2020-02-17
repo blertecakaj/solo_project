@@ -1,0 +1,150 @@
+*{
+  margin: 0 auto;
+  max-width: 970px;
+  font-family: sans-serif;
+}
+.register-login-container{
+    margin-bottom: 5%;
+}
+.register-form{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.register-form h3{
+    text-align: center;
+    color: #333;
+}
+.login-form{
+    padding: 5%;
+    background: #0062cc;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form h3{
+    text-align: center;
+    color: #fff;
+}
+.register-login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.register-form .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.login-form .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+
+.logo{
+  color: #0062cc;
+  font-weight: bold;
+  font-family:serif;
+}
+
+header{
+  background-color: #D1EEEE;
+}
+
+#post_form{
+  padding:5% 0;
+  width: 60%;
+}
+
+#btn_post #btn_food #btn_user{
+  font-weight: bold;
+  color:white;
+}
+
+#food{
+  background-color:#2E8B57;
+}
+
+#posts{
+  background-color: #fa4251;
+}
+
+#food_form{
+  padding:5% 0;
+  width: 60%;
+}
+
+.daily_calories{
+  width: 45%;
+  margin-right: 7%;
+  display: inline-block;
+}
+
+#search-form{
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#wrapper{
+  border-top:5px solid #65909A;
+  padding: 10px 15px;
+  background-color: #7AC5CD;
+}
+
+footer{
+  background-color: #008080;
+  color:white;
+  font-weight: bold;
+  text-align: center;
+}
+
+footer p{
+  margin-bottom: 0px;
+}
+
+#user{
+  background-color: #FF7F50;
+}
+
+#user_form{
+  padding:5% 0;
+  width: 60%;
+}
+
+.needed_calories{
+  width:50%;
+  display: inline-block;
+}
+
+#activity_factor_details{
+  display: inline-block;
+  vertical-align: top;
+  width:49%;
+}
+
+.likes{
+  max-width: 70%;
+}
+.likes h5{
+  text-align: center;
+}
+
+.user-info{
+  width: 45%;
+  display: inline-block;
+}
+
+.user-info h2{
+  color:#2F4F4F;
+}
+
+.user-picture{
+  width: 54%;
+  display: inline-block;
+  vertical-align: top;
+}

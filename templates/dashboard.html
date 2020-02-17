@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eNutrition</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" id="logo">eNutrition</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {% if user.user_level != 9 %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/needed_calories">Needed Calories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/daily_intake">Daily Calory Intake</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_profile/{{user.user_id}}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/food">Food</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/posts/add">Add Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/food/add">Add Food</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+      <div id="wrapper">
+        <h2 style="text-align:center;">Tips and Tricks</h2>
+        {% for post in posts %}
+        <div class="card border-secondary mb-3" style="max-width:70%">
+          <div class="card-header" style="width:100%;text-align:center;font-weight:bold">{{post.post_name}}</div>
+          <div class="card-body" style="background-color:#F0FFFF;">
+            <p class="card-text" style="text-align:justify;">{{post.post_content}}</p>
+          </div>
+          <div class="card-footer border-secondary" style="width:100%">
+            {% if post.times_liked == 1 %}
+              <p>{{post.times_liked}} like</p>
+            {% else %}
+              <p>{{post.times_liked}} likes</p>
+            {% endif %}
+            {% if user.user_level == 9 %}
+            <a href="/edit_post/{{post['post_id']}}"><button class="btn btn-success">Edit</button></a>
+            <a href="/delete/{{post['post_id']}}"><button class="btn btn-danger">Delete</button></a>
+            {% else %}
+              {% if post['post_id'] in liked_posts_ids %}
+              <a href='/posts/{{post.post_id}}/unlike'><button class="btn btn-secondary">Unlike</button></a>
+              {% else %}
+              <a href='/posts/{{post.post_id}}/like'><button class="btn btn-secondary">Like</button></a>
+              {% endif %}
+              <a href='/post_details/{{post.post_id}}'><button class="btn btn-info">Details</button></a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+        <footer>
+          <p>B.C.</p>
+        </footer>
+  </body>
+</html>

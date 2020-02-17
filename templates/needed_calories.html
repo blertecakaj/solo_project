@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eNutrition</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" id="logo">eNutrition</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/needed_calories">Needed Calories<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/daily_intake">Daily Calory Intake</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div id="wrapper">
+      <div class="needed_calories">
+        <h4>Needed Calories:</h4>
+        <div class="form-group">
+          <label for="sel1">System:</label>
+           <select class="form-control" id="system">
+             <option value="metric">Metric</option>
+             <option value="imperial">Imperial</option>
+           </select>
+         </div>
+        <div class="form-group">
+          <label for="sel2">Gender:</label>
+          <select class="form-control" id="gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" id="weight" class="form-control" placeholder="Weight (in kg or lbs)">
+        </div>
+        <div class="form-group">
+          <input type="text" id="height" class="form-control" placeholder="Height (in cm or ft)">
+        </div>
+        <div class="form-group">
+          <input type="text" id="age" class="form-control" placeholder="Age">
+        </div>
+        <div class="form-group">
+          <input type="text" id="activity_factor" class="form-control" placeholder="Activity Factor">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-secondary" id="button_calculate">Calculate</button>
+        </div>
+        <div class="form-group">
+          <input type="text" id="result" class="form-control" placeholder="Result">
+        </div>
+      </div>
+      <div id="activity_factor_details">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activity Factor</h5>
+            <p>Sedentary (no exercise, desk job) - 1.2</p>
+            <p>Moderate Exercise (3-5 days per week) - 1.55</p>
+            <p>Hard Exercise (6-7 days per week) - 1.725</p>
+          </div>
+        </div>
+      </div>
+
+
+        <script>
+          var weight_input = document.getElementById("weight");
+          var height_input = document.getElementById("height");
+          var age_input = document.getElementById("age");
+          var activity_factor_input = document.getElementById("activity_factor");
+          var result_input = document.getElementById("result");
+          var button_input = document.getElementById("button_calculate");
+          button_input.onclick = function(event) {
+            if(document.getElementById("system").value == "metric"){
+              if(document.getElementById("gender").value == "female"){
+                result_input.value = [(10 * parseFloat(weight_input.value)) + (6.25 * parseFloat(height_input.value)) - (5 * parseFloat(age_input.value)) - 161] * parseFloat(activity_factor_input.value);
+                return false;
+              }
+              else{
+                result_input.value = [(10 * parseFloat(weight_input.value)) + (6.25 * parseFloat(height_input.value)) - (5 * parseFloat(age_input.value)) + 5] * parseFloat(activity_factor_input.value);
+                return false;
+              }
+            }
+            else{
+              if(document.getElementById("gender").value == "female"){
+                result_input.value = [(4.536 * parseFloat(weight_input.value)) + (15.88 * parseFloat(height_input.value)) - (5 * parseFloat(age_input.value)) - 161] * parseFloat(activity_factor_input.value);
+                return false;
+              }
+              else{
+                result_input.value = [(4.536 * parseFloat(weight_input.value)) + (15.88 * parseFloat(height_input.value)) - (5 * parseFloat(age_input.value)) + 5] * parseFloat(activity_factor_input.value);
+                return false;
+              }
+            }
+          }
+        </script>
+    </div>
+    <footer>
+      <p>B.C.</p>
+    </footer>
+  </body>
+</html>

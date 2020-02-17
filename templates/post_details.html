@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eNutrition</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" id="logo">eNutrition</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/needed_calories">Needed Calories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/daily_intake">Daily Calory Intake</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div id="wrapper">
+      <div class="card border-secondary mb-3" style="max-width:70%">
+        <div class="card-header" style="width:100%;text-align:center;font-weight:bold">{{result.post_name}}</div>
+        <div class="card-body" style="background-color:#F0FFFF;">
+          <p class="card-text" style="text-align:justify;">{{result.post_content}}</p>
+        </div>
+      </div>
+      <div class="likes">
+        <h5>Users who liked this post: </h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users_who_liked_post %}
+              <tr>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer>
+      <p>B.C.</p>
+    </footer>
+
+  </body>
+</html>
